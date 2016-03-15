@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hCardBuilder">
+
+<head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head 
+         content must come *after* these tags -->
+    <title>hCard Builder</title>
+	<!-- build:css styles/base.css -->
+	<link rel="stylesheet" href="styles/base.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,800,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+	<!-- endbuild -->
+</head>
+
+<body>
+	<div class="wrap" ng-controller="hCardFormBuilder">
+    <!-- Left Form Layout
+   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="form-body" >
+  
+                <form role="form" name="hCardCreateForm"  ng-submit="submitForm()">
+   <div class="container">
+    <div class="row"><h1>hCard Builder</h1></div>
+    <br>
+    <div class="row"><small>PERSONAL DETAILS</small><hr></div>   
+		<div class="row">
+			<div class="six columns">
+			<label for="">Given Name</label>
+			<input type="text" class="form-control" id="firstname" name="firstname" ng-model="formData.firstName" >
+			</div>
+		<div class="six columns">
+		  <label for="">Surname</label>
+		  <input type="text" class="form-control" id="lastname" name="lastname" ng-model="formData.lastName" >  
+		</div>
+    </div>
+	
+    <div class="row">
+		 <div class="six columns">
+			  <label for="text">Email</label>
+			   <input type="text" class="form-control" id="email" name="email" ng-model="formData.email" >
+			 </div>
+		 <div class="six columns">
+			  <label for="">Phone</label>
+				<input type="text" class="form-control" id="phone" name="phone" ng-model="formData.phone" >    
+		 </div>
+    </div> 
+    <br>
+    <div class="row"><small>ADDRESS</small><hr></div>       
+		<div class="row">
+			 <div class="six columns">
+				  <label for="">House Name or #</label>
+					 <input type="text" class="form-control" id="houseName" name="houseName" ng-model="formData.houseName">
+			 </div>
+		 <div class="six columns">
+			 <label for="">Street</label>
+			 <input type="text" class="form-control" id="street" name="street"  ng-model="formData.street">
+		 </div>
+    </div>
+    <div class="row">
+		 <div class="six columns">
+			  <label for="">Suburb</label>
+			  <input type="text" class="form-control" id="suburb" name="suburb" ng-model="formData.suburb" >
+		 </div>
+		 <div class="six columns">
+			  <label for="">State</label>
+			 <input type="text" class="form-control" id="state" name="state" ng-model="formData.state" >  
+		 </div>
+    </div> 
+    <div class="row">
+		 <div class="six columns">
+			  <label for="">Postcode</label>
+				 <input type="text" class="form-control" maxlength="6" id="postcode" name="postcode" ng-model="formData.postcode" >
+		 </div>
+		 <div class="six columns">
+			  <label for="">Country</label>
+			   <input type="text" class="form-control" id="country" name="country"  ng-model="formData.country" >     
+		 </div>
+    </div>          
+    <div class="row card-row">
+		<button type="submit" id="submit-card" id="submit" value="submit">Create hCard</button>
+    </div>
+   </div>
+  </div>
+</form>
+
+   <!----------------------------------------------------
+         Preview Section of hCard 
+   –––––––––––––––––––––––––––––––––––––––––––––––––– --> 
+  <div class="columns card-body">
+	   <div class="container">
+			<div class="row preview-title"><h4>HCARD PREVIEW</h4></div>
+				<div class="row">
+					 <div class="card">
+						  <div class="row"><h3 id="js-card-fullname">{{formData.firstName}} {{formData.lastName }}</h3></div>
+						   <div class="form-container">
+							<div class="row form-row">
+								<p><strong>EMAIL</strong> <span class="card-output-fields"><span id="js-card-email-firstname">{{formData.email}} </span></span></p>
+							</div>
+							<div class="row form-row">
+								<p><strong>PHONE</strong> <span id="js-card-phone" class="card-output-fields">{{formData.phone }}</span></p>
+							</div>
+							<div class="row form-row">
+								<p><strong>ADDRESS</strong> <span id="js-card-address" class="card-output-fields">{{formData.houseName}}  {{formData.street }}</span></p>
+							</div>  
+							<div class="row form-row">
+							 <p><span id="js-card-address-suburb" class="card-output-fields">{{formData.suburb}}</span><span id="js-card-address-state" class="card-output-fields"> {{formData.state }}</span></p>
+							</div>   
+							<div class="row form-row">
+							 <p><strong>POSTCODE</strong> <span id="js-card-postcode" class="card-output-fields">{{formData.postcode}} </span> <strong>COUNTRY</strong> <span id="js-card-country" class="card-output-fields">{{formData.country }}</span></p>
+							</div> 
+					   </div>
+				</div>
+			</div>
+		</div>
+  </div> 
+ </div>
+
+
+<!-- build:js scripts/app.js -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+
+<!-- endbuild -->
+
+</body>
+
+</html>
